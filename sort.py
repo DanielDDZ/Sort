@@ -20,7 +20,7 @@ def clean(folder: Path):
         if file.is_file():
             sort_files(file, folder)
 
-        elif file.name != EXTENSIONS.keys():
+        elif file.name != "images" or file.name != "video" or file.name != "documents" or file.name != "audio" or file.name != "archives":
 
             subfolder = file
 
@@ -51,8 +51,6 @@ def sort_files(file: Path, folder: Path):
 
             if folder_name == 'archives':
                 archive_unpack(new_folder, new_file)
-
-            break
 
     else:
         new_file_name = normalize(file.name.removesuffix(file.suffix))
@@ -100,7 +98,7 @@ def main():
 
     root_folder = Path(sys.argv[1])
 
-    if (not root_folder.exists()) and (not root_folder.is_dir()):
+    if not root_folder.exists() and not root_folder.is_dir():
         print('Path incorrect')
         exit()
 
