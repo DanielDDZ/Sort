@@ -20,7 +20,7 @@ def clean(folder: Path):
         if file.is_file():
             sort_files(file, folder)
 
-        elif file.name != "images" or file.name != "video" or file.name != "documents" or file.name != "audio" or file.name != "archives":
+        if file.name not in EXTENSIONS:
 
             subfolder = file
 
